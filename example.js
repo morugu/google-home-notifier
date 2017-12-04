@@ -6,7 +6,7 @@ var app = express();
 const serverPort = 8091; // default port
 
 var deviceName = 'Google Home';
-var ip = '192.168.1.20'; // default IP
+var ip = '192.168.2.102'; // default IP
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -34,12 +34,12 @@ app.post('/google-home-notifier', urlencodedParser, function (req, res) {
         var mp3_url = text;
         googlehome.play(mp3_url, function(notifyRes) {
           console.log(notifyRes);
-          res.send(deviceName + ' will play sound from url: ' + mp3_url + '\n');
+          res.send(deviceName + ' が ' + mp3_url + ' を再生します。\n');
         });
       } else {
         googlehome.notify(text, function(notifyRes) {
           console.log(notifyRes);
-          res.send(deviceName + ' will say: ' + text + '\n');
+          res.send(deviceName + ' が「' + text + '」と言います。\n');
         });
       }
     } catch(err) {
@@ -75,12 +75,12 @@ app.get('/google-home-notifier', function (req, res) {
         var mp3_url = text;
         googlehome.play(mp3_url, function(notifyRes) {
           console.log(notifyRes);
-          res.send(deviceName + ' will play sound from url: ' + mp3_url + '\n');
+          res.send(deviceName + ' が ' + mp3_url + ' を再生します。\n');
         });
       } else {
         googlehome.notify(text, function(notifyRes) {
           console.log(notifyRes);
-          res.send(deviceName + ' will say: ' + text + '\n');
+          res.send(deviceName + ' が「' + text + '」と言います。\n');
         });
       }
     } catch(err) {
